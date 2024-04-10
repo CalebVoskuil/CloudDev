@@ -1,0 +1,87 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "MyWork";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: Quicksand, sans-serif;
+            background-image: url('/images/flowers.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .image-gallery {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap;
+            max-width: 1000px; /* Adjust the max-width as needed */
+            margin: 0 auto;
+        }
+
+        .section-heading {
+            background-color: rgba(128, 128, 128, 0.5);
+            text-align: center;
+            padding: 10px 0;
+            width: 100%;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        .image-item {
+            margin: 10px;
+            text-align: center;
+            width: 300px; /* Set a fixed width for the image container */
+            height: 300px; /* Set a fixed height for the image container */
+        }
+
+            .image-item img {
+                width: 100%;
+                height: 100%;
+                max-width: 300px; /* Adjust the max-width of images as needed */
+                border-radius: 15px; /* Rounded corners */
+            }
+
+            .image-item p {
+                margin-top: 10px;
+                color: white;
+            }
+    </style>
+</head>
+<body>
+    <h2 class="section-heading">My Work</h2>
+    <div class="image-gallery">
+        <div class="image-item">
+            <img src="~/images/enjoy_ceramic_art_handmade_mugs_2.jpg" />
+            <p> R500<br />
+                4 christmas themed hand crafted ceramic mugs
+            </p>
+        </div>
+        <div class="image-item">
+            <img src="~/images/fm348.jpg" />
+            <p>R950<br />
+                A 3 piece set of flower vases
+            </p>
+        </div>
+        <div class="image-item">
+            <img src="~/images/5pc-place-set-blue.jpg" />
+            <p>R2000<br />
+                A lovely 5pc set consisting of 3 plates<br />
+                1 mug and a bowel
+            </p>
+        </div>
+    </div>
+</body>
+</html>

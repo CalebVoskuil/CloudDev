@@ -1,0 +1,55 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Home";
+}
+
+<style>
+  
+   
+    body {
+        background-image: url('/images/1_king_houndekpinkou_artisan_elodie_daguin_michelangelo_foundation.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        color: #fff; /* Text color */
+        font-family: Quicksand, sans-serif; /* Font family */
+        padding: 20px; /* Add padding for spacing */
+    }
+
+    .business-name {
+        font-size: 36px; /* Font size */
+        font-family: EB Garamond, sans-serif;
+        font-weight: bold; /* Bold text */
+    }
+
+    .description {
+        font-family: Quicksand, sans-serif;
+        font-size: 16px; /* Font size */
+        margin-bottom: 20px; /* Add margin for spacing */
+    }
+
+    .btn {
+        display: inline-block;
+        padding: 10px 20px;
+        border: 2px solid #fff; /* Button border */
+        border-radius: 20px; /* Border radius */
+        text-decoration: none; /* Remove underline */
+        color: #fff; /* Text color */
+        background-color: transparent; /* Transparent background */
+        transition: all 0.3s ease; /* Transition effect */
+    }
+
+        .btn:hover {
+            background-color: rgba(255, 255, 255, 0.3); /* Semi-transparent background on hover */
+        }
+</style>
+
+<div class="header">
+    <div class="business-name">KhumaloCraft<br /> Emporium</div>
+    <div class="description">
+        We are a creative artisanal studio crafting unique handmade products<br />
+        that inspire and delight. Explore our collection of handcrafted treasures<br />
+        and find something special for yourself or a loved one.
+    </div>
+    <a class="btn" asp-controller="Home" asp-action="MyWork">My Work</a>
+</div>
+
