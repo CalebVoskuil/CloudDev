@@ -13,7 +13,7 @@ namespace Assignment1.Models
             using (SqlConnection con = new SqlConnection(con_string))
             {
 
-                string sql = "SELECT userID FROM UserTable WHERE userEmail = @Email AND userName = @Name";
+                string sql = "SELECT userID FROM UserTable WHERE UserEmail = @Email AND UserName = @Name";
                 SqlCommand cmd = new SqlCommand(sql, con);
                 cmd.Parameters.AddWithValue("@Email", email);
                 cmd.Parameters.AddWithValue("@Name", name);
