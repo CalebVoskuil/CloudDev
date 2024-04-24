@@ -34,11 +34,12 @@ namespace Assignment1.Controllers
         {
             return View();
         }
-        public IActionResult MyWork()
+
+        public IActionResult SignUp()
         {
             return View();
         }
-       
+
 
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
