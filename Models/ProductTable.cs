@@ -45,7 +45,7 @@ namespace Assignment1.Models
 
             using (SqlConnection con = new SqlConnection(con_string))
             {
-                string sql = "SELECT ProductID, ProductName, ProductPrice, ProductCategory, ProductAvailability FROM productTable";
+                string sql = "SELECT (ProductID, ProductName, ProductPrice, ProductCategory, ProductAvailability) FROM productTable";
                 SqlCommand cmd = new SqlCommand(sql, con);
                 con.Open();
                 SqlDataReader reader1 = cmd.ExecuteReader();

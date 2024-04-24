@@ -15,7 +15,7 @@ namespace Assignment1.Models
        
         public int insert_User(UserTable m) 
         {
-            string sql = " INSERT INTO UserTable userName, userSurname, userEmail (@Name, @Surname, @Email)";
+            string sql = " INSERT INTO UserTable (UserName, UserSurname, UserEmail) VALUES (@Name, @Surname, @Email)";
             SqlCommand cmd = new SqlCommand(sql, con);
             cmd.Parameters.AddWithValue("@Name", m.Name);
             cmd.Parameters.AddWithValue("@Surname", m.Surname);
