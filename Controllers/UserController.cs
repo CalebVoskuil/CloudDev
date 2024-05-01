@@ -18,7 +18,7 @@ namespace Assignment1.Controllers
         
         public IActionResult SignUp()
         {
-            return View();
+            return View(userTable1);
         }
     }
 }
