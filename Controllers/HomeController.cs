@@ -34,6 +34,10 @@ namespace Assignment1.Controllers
         {
             return View();
         }
+        public IActionResult MyWork()
+        {
+            return View();
+        }
 
         public IActionResult SignUp()
         {
