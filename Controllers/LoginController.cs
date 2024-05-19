@@ -13,7 +13,7 @@ namespace Assignment1.Controllers
         }
 
         [HttpPost]
-        public ActionResult Privacy(string email, string name)
+        public IActionResult Privacy(string email, string name)
         {
             var LoginModel = new LoginModel();
             int userID = LoginModel.select_User(email, name);
