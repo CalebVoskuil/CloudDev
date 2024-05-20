@@ -12,14 +12,16 @@ namespace Assignment1.Models
         public string Name { get; set; }
         public string Email { get; set; }
         public string Surname { get; set; }
-       
+        public string Password { get; set; }
+
         public int insert_User(UserTable m) 
         {
-            string sql = " INSERT INTO UserTable (UserName, UserSurname, UserEmail) VALUES (@Name, @Surname, @Email)";
+            string sql = " INSERT INTO UserTable (UserName, UserSurname, UserEmail, UserPassword) VALUES (@Name, @Surname, @Email, @Password)";
             SqlCommand cmd = new SqlCommand(sql, con);
             cmd.Parameters.AddWithValue("@Name", m.Name);
             cmd.Parameters.AddWithValue("@Surname", m.Surname);
             cmd.Parameters.AddWithValue("@Email", m.Email);
+            cmd.Parameters.AddWithValue("@Password", m.Password);
             con.Open();
             int rowsAffected = cmd.ExecuteNonQuery();
             con.Close();
