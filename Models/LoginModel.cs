@@ -7,7 +7,7 @@ namespace Assignment1.Models
     {
         public static string con_string = "Server=tcp:cloud-dev-server.database.windows.net,1433;Initial Catalog=CLOUD_DEV;Persist Security Info=False;User ID=CalebVoskuil;Password=##LenovoSilver!1;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30";
 
-        public int select_User(string Password, string name)
+        public int select_User(string password, string name)
         {
             int userID = -1;
             using (SqlConnection con = new SqlConnection(con_string))
@@ -15,7 +15,7 @@ namespace Assignment1.Models
 
                 string sql = "SELECT UserID FROM UserTable WHERE UserPassword = @Password AND UserName = @Name";
                 SqlCommand cmd = new SqlCommand(sql, con);
-                cmd.Parameters.AddWithValue("@Password", Password);
+                cmd.Parameters.AddWithValue("@Password", password);
                 cmd.Parameters.AddWithValue("@Name", name);
                 try
                 {

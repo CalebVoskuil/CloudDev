@@ -13,14 +13,14 @@ namespace Assignment1.Controllers
         }
 
         [HttpPost]
-        public ActionResult Privacy(string Password, string name)
+        public ActionResult Privacy(string password, string name)
         {
             var LoginModel = new LoginModel();
-            int userID = LoginModel.select_User(Password, name);
+            int userID = LoginModel.select_User(password, name);
             if (userID != -1)
             { 
                 HttpContext.Session.SetInt32("UserID", userID);
-                return RedirectToAction("About");
+                return RedirectToAction("Home", "Home");
             }
             else
             {

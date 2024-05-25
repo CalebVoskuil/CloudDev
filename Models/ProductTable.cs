@@ -10,10 +10,10 @@ namespace Assignment1.Models
         public static SqlConnection con = new SqlConnection(con_string);
 
         public int ProductID { get; set; }
-        public string Name { get; set; }
-        public decimal Price { get; set; }
-        public string Category { get; set; }
-        public bool Availability { get; set; }
+        public string? Name { get; set; }
+        public string? Price { get; set; }
+        public string? Category { get; set; }
+        public string? Availability { get; set; }
         
 
         public int insert_Product(ProductTable p)
@@ -39,29 +39,30 @@ namespace Assignment1.Models
             }
         }
 
-        public static List<ProductTable> select_Products()
+        public static List<ProductTable> GetAllProducts()
         {
             List<ProductTable> products = new List<ProductTable>();
 
             using (SqlConnection con = new SqlConnection(con_string))
             {
-                string sql = "SELECT (ProductID, ProductName, ProductPrice, ProductCategory, ProductAvailability) FROM productTable";
+                string sql ="SELECT ProductID, ProductName, ProductPrice, ProductCategory, ProductAvailability FROM ProductTable";
                 SqlCommand cmd = new SqlCommand(sql, con);
+
                 con.Open();
-                SqlDataReader reader1 = cmd.ExecuteReader();
-                while (reader1.Read())
+                SqlDataReader rdr = cmd.ExecuteReader();
+                while (rdr.Read())
                 {
                     ProductTable product = new ProductTable();
-                    product.ProductID = Convert.ToInt32(reader1["ProductID"]);
-                    product.Name = Convert.ToString(reader1["ProductName"]);
-                    product.Price = Convert.ToDecimal(reader1["ProductPrice"]);
-                    product.Category = Convert.ToString(reader1["ProductCategory"]);
-                    product.Availability = Convert.ToBoolean(reader1["ProductAvailability"]);
+                    product.ProductID = Convert.ToInt32(rdr["productID"]);
+                    product.Name = rdr["ProductName"].ToString();
+                    product.Price = rdr["ProductPrice"].ToString();
+                    product.Category = rdr["ProductCategory"].ToString();
+                    product.Availability = rdr["ProductAvailability"].ToString();
+
                     products.Add(product);
                 }
-                reader1.Close();
             }
-                    
+
             return products;
         }
 

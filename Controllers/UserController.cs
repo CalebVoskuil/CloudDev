@@ -9,14 +9,14 @@ namespace Assignment1.Controllers
         public UserTable userTable1 = new UserTable();
 
         [HttpPost]
-        public IActionResult SignUp(UserTable Users)
+        public ActionResult SignUp(UserTable Users)
         {
            var result =  userTable1.insert_User(Users);
             return RedirectToAction("Privacy", "Home");
         }
 
         
-        public IActionResult SignUp()
+        public ActionResult SignUp()
         {
             return View(userTable1);
         }

@@ -7,12 +7,12 @@ namespace Assignment1.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        //private readonly IHttpContextAccessor _httpContextAccessor;
+        private readonly IHttpContextAccessor _httpContextAccessor;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger,IHttpContextAccessor httpContextAccessor )
         {
             _logger = logger;
-            //_httpContextAccessor = httpContextAccessor;
+            _httpContextAccessor = httpContextAccessor;
         }
 
         public IActionResult Home()
@@ -22,6 +22,9 @@ namespace Assignment1.Controllers
         public IActionResult Index()
         {
             //List<ProductTable> products = ProductTable.GetAllProducts();
+            int? userID = _httpContextAccessor.HttpContext.Session.GetInt32("UserID");
+            //ViewData["Products"] = products;
+            ViewData["UserID"] = userID;
             return View();
         }
         public IActionResult Privacy()

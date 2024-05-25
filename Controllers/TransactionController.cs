@@ -7,7 +7,7 @@ namespace Assignment1.Controllers
     public class TransactionController : Controller
     {
         [HttpPost]
-        public ActionResult PlaceOrder(int userID, int procuctID)
+        public ActionResult PlaceOrder(int userID, int productID)
         {
             try
             {
@@ -19,7 +19,7 @@ namespace Assignment1.Controllers
                     using (SqlCommand cmd = new SqlCommand(sql, con))
                     {
                         cmd.Parameters.AddWithValue("@userID", userID);
-                        cmd.Parameters.AddWithValue("@productID", procuctID);
+                        cmd.Parameters.AddWithValue("@productID", productID);
                         con.Open();
                         int rowsAffected = cmd.ExecuteNonQuery();
                         con.Close();
