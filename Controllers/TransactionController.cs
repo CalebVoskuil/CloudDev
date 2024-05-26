@@ -25,7 +25,7 @@ namespace Assignment1.Controllers
                         con.Close();
                         if (rowsAffected > 0)
                         {
-                            return RedirectToAction("Index", "Home");
+                            return RedirectToAction("Home","Home");
                         }
                         else
                         {

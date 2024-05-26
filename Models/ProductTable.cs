@@ -10,10 +10,10 @@ namespace Assignment1.Models
         public static SqlConnection con = new SqlConnection(con_string);
 
         public int ProductID { get; set; }
-        public string? Name { get; set; }
-        public string? Price { get; set; }
-        public string? Category { get; set; }
-        public string? Availability { get; set; }
+        public string Name { get; set; }
+        public string Price { get; set; }
+        public string Category { get; set; }
+        public string Availability { get; set; }
         
 
         public int insert_Product(ProductTable p)
@@ -45,7 +45,7 @@ namespace Assignment1.Models
 
             using (SqlConnection con = new SqlConnection(con_string))
             {
-                string sql ="SELECT ProductID, ProductName, ProductPrice, ProductCategory, ProductAvailability FROM ProductTable";
+                string sql = "SELECT * FROM ProductTable";
                 SqlCommand cmd = new SqlCommand(sql, con);
 
                 con.Open();
@@ -53,16 +53,17 @@ namespace Assignment1.Models
                 while (rdr.Read())
                 {
                     ProductTable product = new ProductTable();
-                    product.ProductID = Convert.ToInt32(rdr["productID"]);
+                    product.ProductID = Convert.ToInt32(rdr["ProductID"]);
                     product.Name = rdr["ProductName"].ToString();
                     product.Price = rdr["ProductPrice"].ToString();
                     product.Category = rdr["ProductCategory"].ToString();
-                    product.Availability = rdr["ProductAvailability"].ToString();
+                    //product.Availability = rdr["ProductAvailability"].ToString();
 
                     products.Add(product);
+                   
                 }
             }
-
+            
             return products;
         }
 

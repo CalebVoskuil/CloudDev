@@ -21,9 +21,9 @@ namespace Assignment1.Controllers
         }
         public IActionResult Index()
         {
-            //List<ProductTable> products = ProductTable.GetAllProducts();
+            List<ProductTable> products = ProductTable.GetAllProducts();
             int? userID = _httpContextAccessor.HttpContext.Session.GetInt32("UserID");
-            //ViewData["Products"] = products;
+            ViewData["products"] = products;
             ViewData["UserID"] = userID;
             return View();
         }

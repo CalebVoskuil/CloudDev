@@ -2,9 +2,9 @@
 
 @{
     ViewData["Title"] = "Home Page";
-    var userID = ViewData["userID"];
-    var products = ViewData["Products"] as List<Assignment1.Models.ProductTable>;
-}
+    var userID = ViewData["UserID"];
+    var products = ViewData["products"] as List<Assignment1.Models.ProductTable>;
+  }  
 
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
@@ -31,7 +31,10 @@
         </tr>
     </thead>
     <tbody>
-        @foreach(var product in products)
+        
+            
+        
+        @foreach (var product in products)
         {
             <tr>
                 <td>@product.Name</td>
@@ -47,5 +50,6 @@
                 </td>
             </tr>
         }
+        
     </tbody>
 </table>

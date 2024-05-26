@@ -7,6 +7,8 @@
 <style>
     body{
         background-color: #2f2f2f;
+        justify-content: center;
+        align-items : center;
 
     }
     .form-box {
@@ -16,16 +18,17 @@
         border-radius: 16px;
         color: #010101;
         justify-content: center;
+        width: 450px;
     }
 
     .form {
-        position: relative;
         display: flex;
         flex-direction: column;
-        padding: 32px 24px 24px;
-        gap: 16px;
-        text-align: center;
-        justify-content: center;
+        gap: 10px;
+        
+        padding: 30px;
+        width: 450px;
+        border-radius: 20px;
     }
 
     /*Form text*/
@@ -53,7 +56,8 @@
         background: none;
         border: 0;
         outline: 0;
-        height: 40px;
+        height: 60px;
+        height: 100%;
         width: 100%;
         border-bottom: 1px solid #eee;
         font-size: .9rem;
@@ -105,6 +109,7 @@
         <div class="form-box">
             <form class="form">
                 <span class="title">Sign up</span>
+                <p </p>
                 <span class="subtitle">Create a free account with your email.</span>
                 <div class="form-container">
                     <input type="text" class="input" name="Name" placeholder="Name" required>
