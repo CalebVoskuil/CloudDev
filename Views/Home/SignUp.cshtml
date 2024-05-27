@@ -11,6 +11,15 @@
         align-items : center;
 
     }
+
+    .centered-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        text-align: center;
+    }
     .form-box {
         max-width: 300px;
         background: #f1f7fe;
@@ -104,7 +113,7 @@
 
 
 <body>
-
+    <div class="centered-container">
     <form action="/User/SignUp" method="post">
         <div class="form-box">
             <form class="form">
@@ -128,7 +137,7 @@
 
 
     </form>
-
+    </div>
 
 
 </body>

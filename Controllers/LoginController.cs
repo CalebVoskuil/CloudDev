@@ -20,7 +20,7 @@ namespace Assignment1.Controllers
             if (userID != -1)
             { 
                 HttpContext.Session.SetInt32("UserID", userID);
-                return RedirectToAction("Home", "Home");
+                return RedirectToAction("MyWork","Home");
             }
             else
             {

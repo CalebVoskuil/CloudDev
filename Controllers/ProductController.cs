@@ -11,7 +11,7 @@ namespace Assignment1.Controllers
         public ActionResult MyWork(ProductTable products)
         {
             var result = productTable1.insert_Product(products);
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("MyWork");
             
         }
 

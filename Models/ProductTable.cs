@@ -20,7 +20,7 @@ namespace Assignment1.Models
         {
             try
             {
-                string sql = "INSERT INTO ProductTable (ProductName, ProductPrice, ProductCategory, ProductAvailability) VALUES (@Name, @Price, @Category, @Availability)";
+                string sql = "INSERT INTO ProductTable (ProductName, ProductPrice, ProductCategory, ProductAvalability) VALUES (@Name, @Price, @Category, @Availability)";
                 SqlCommand cmd = new SqlCommand(sql, con);
                 cmd.Parameters.AddWithValue("@Name", p.Name);
                 cmd.Parameters.AddWithValue("@Price", p.Price);
@@ -57,7 +57,7 @@ namespace Assignment1.Models
                     product.Name = rdr["ProductName"].ToString();
                     product.Price = rdr["ProductPrice"].ToString();
                     product.Category = rdr["ProductCategory"].ToString();
-                    //product.Availability = rdr["ProductAvailability"].ToString();
+                    product.Availability = rdr["ProductAvalability"].ToString();
 
                     products.Add(product);
                    

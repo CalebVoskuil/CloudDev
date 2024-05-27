@@ -21,10 +21,7 @@ namespace Assignment1.Controllers
         }
         public IActionResult Index()
         {
-            List<ProductTable> products = ProductTable.GetAllProducts();
-            int? userID = _httpContextAccessor.HttpContext.Session.GetInt32("UserID");
-            ViewData["products"] = products;
-            ViewData["UserID"] = userID;
+           
             return View();
         }
         public IActionResult Privacy()
@@ -42,6 +39,10 @@ namespace Assignment1.Controllers
         }
         public IActionResult MyWork()
         {
+            List<ProductTable> products = ProductTable.GetAllProducts();
+            int? userID = _httpContextAccessor.HttpContext.Session.GetInt32("UserID");
+            ViewData["products"] = products;
+            ViewData["UserID"] = userID;
             return View();
         }
 
@@ -49,13 +50,16 @@ namespace Assignment1.Controllers
         {
             return View();
         }
+       
 
 
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            var model = new ErrorViewModel
+            {
+                RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier
+            };
+            return View(model);
         }
     }
 }

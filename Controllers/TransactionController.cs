@@ -25,7 +25,7 @@ namespace Assignment1.Controllers
                         con.Close();
                         if (rowsAffected > 0)
                         {
-                            return RedirectToAction("Home","Home");
+                            return RedirectToAction("MyOrders");
                         }
                         else
                         {
@@ -39,6 +39,48 @@ namespace Assignment1.Controllers
                 return View("Error");
             }
         }
+        public ActionResult MyOrders(int userID)
+        {
+            try
+            {
+                List<OrderViewModel> orders = new List<OrderViewModel>();
+
+                // Fetch orders from the database and map them to OrderViewModel objects
+                using (SqlConnection con = new SqlConnection(ProductTable.con_string))
+                {
+                    string sql = "SELECT TransactionID, ProductName, ProductPrice FROM TransactionTable JOIN ProductTable ON TransactionTable.ProductID = ProductTable.ProductID WHERE UserID = @userID";
+
+                    using (SqlCommand cmd = new SqlCommand(sql, con))
+                    {
+                        cmd.Parameters.AddWithValue("@userID", userID);
+                        con.Open();
+
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                OrderViewModel order = new OrderViewModel
+                                {
+                                    TransactionID = (int)reader["TransactionID"],
+                                    ProductName = reader["ProductName"].ToString(),
+                                    ProductPrice = (decimal)reader["ProductPrice"],
+                                    
+                                };
+                                orders.Add(order);
+                            }
+                        }
+                    }
+                }
+
+                return View(orders);
+            }
+            catch (Exception ex)
+            {
+                // Log the error and return an error view
+                return View("Error");
+            }
+        }
+
 
     }
-}
+    }

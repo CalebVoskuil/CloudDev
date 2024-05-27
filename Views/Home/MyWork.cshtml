@@ -1,14 +1,13 @@
-﻿
+﻿@model ( int userID, List<Assignment1.Models.ProductTable> products)
+
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
     ViewData["Title"] = "MyWork";
+    var userID = ViewData["UserID"];
+    var products = ViewData["products"] as List<Assignment1.Models.ProductTable>;
 }
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title</title>
+
+@section Styles {
     <style>
         body {
             margin: 0;
@@ -58,30 +57,59 @@
                 margin-top: 10px;
                 color: white;
             }
+
+        .product-details {
+            margin-top: 10px;
+            color: white;
+            text-align: left;
+        }
+
+            .product-details p {
+                margin: 0;
+            }
+
+            .product-details form {
+                margin-top: 10px;
+            }
+
+            .product-details button {
+                margin-top: 5px;
+            }
     </style>
-</head>
-<body>
-    <h2 class="section-heading">My Work</h2>
-    <div class="image-gallery">
-        <div class="image-item">
-            <img src="~/images/enjoy_ceramic_art_handmade_mugs_2.jpg" />
-            <p> R500<br />
-                4 christmas themed hand crafted ceramic mugs
-            </p>
-        </div>
-        <div class="image-item">
-            <img src="~/images/fm348.jpg" />
-            <p>R950<br />
-                A 3 piece set of flower vases
-            </p>
-        </div>
-        <div class="image-item">
-            <img src="~/images/5pc-place-set-blue.jpg" />
-            <p>R2000<br />
-                A lovely 5pc set consisting of 3 plates<br />
-                1 mug and a bowel
-            </p>
-        </div>
-    </div>
-</body>
-</html>
+}
+
+<h2 class="section-heading">My Work</h2>
+
+@* @if (userID != null)
+{
+    <p style="color: white;">User ID: @userID</p>
+} *@
+
+<h2 class="section-heading">All Products</h2>
+
+<div class="image-gallery">
+    @if (products != null && products.Any())
+    {
+        @foreach (var product in products)
+        {
+            <div class="image-item">
+                <img src="~/images/enjoy_ceramic_art_handmade_mugs_2.jpg" />  />
+                <div class="product-details">
+                    <p><strong>@product.Name</strong></p>
+                    <p>Price: @product.Price</p>
+                    <p>Category: @product.Category</p>
+                    <p>Availability: @product.Availability</p>
+                    <form asp-controller="Transaction" asp-action="PlaceOrder" method="post">
+                        <input type="hidden" name="userID" value="@userID" />
+                        <input type="hidden" name="productID" value="@product.ProductID" />
+                        <button type="submit" class="btn btn-primary">Place Order</button>
+                    </form>
+                </div>
+            </div>
+        }
+    }
+    else
+    {
+        <p style="color: white;">No products available.</p>
+    }
+</div>

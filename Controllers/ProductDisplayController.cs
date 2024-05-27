@@ -8,7 +8,6 @@ namespace Assignment1.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-          
             var products = ProductDisplayModel.select_Products();
             return View(products);
         }
